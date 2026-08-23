@@ -1,0 +1,13 @@
+diff --git a/chrome/android/java/src/org/chromium/chrome/browser/ntp/RecentTabsCoordinator.java b/chrome/android/java/src/org/chromium/chrome/browser/ntp/RecentTabsCoordinator.java
+index 95f4645e4e14df4f358946ca25c1ddd699202988..5fb7d44e4ddd8350444b9404ca42fcedfb28e21e 100644
+--- a/chrome/android/java/src/org/chromium/chrome/browser/ntp/RecentTabsCoordinator.java
++++ b/chrome/android/java/src/org/chromium/chrome/browser/ntp/RecentTabsCoordinator.java
+@@ -79,7 +79,7 @@ public class RecentTabsCoordinator
+         LayoutInflater inflater = LayoutInflater.from(activity);
+ 
+         mContextMenuManager =
+-                new ContextMenuManager(
++                new org.chromium.chrome.browser.native_page.BraveContextMenuManager(
+                         navigationDelegate, this, mActivity::closeContextMenu, "RecentTabs");
+ 
+         mView = (ViewGroup) inflater.inflate(R.layout.recent_tabs_page, parent, false);
