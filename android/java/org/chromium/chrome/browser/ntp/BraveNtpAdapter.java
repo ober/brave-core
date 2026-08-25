@@ -477,6 +477,10 @@ public class BraveNtpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return mIsTopSitesEnabled ? 1 : 0;
     }
 
+    public int getImageCreditPosition() {
+        return getStatsCount() + getTopSitesCount() + getNewContentCount();
+    }
+
     public void setTopSitesEnabled(boolean isTopSitesEnabled) {
         if (mIsTopSitesEnabled != isTopSitesEnabled) {
             mIsTopSitesEnabled = isTopSitesEnabled;
