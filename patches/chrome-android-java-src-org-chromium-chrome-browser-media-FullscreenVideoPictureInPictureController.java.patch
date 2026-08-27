@@ -1,5 +1,5 @@
 diff --git a/chrome/android/java/src/org/chromium/chrome/browser/media/FullscreenVideoPictureInPictureController.java b/chrome/android/java/src/org/chromium/chrome/browser/media/FullscreenVideoPictureInPictureController.java
-index 7b6c5309d15c802a517306b74278e0e952bebeeb..692f9f53131d8a22d4a18df7880b9d9d2b5b5cb9 100644
+index ddd0bf304310778954531526945045108f12bdd2..8c27bb368b239ff87ee2e5802724a012f5ab102b 100644
 --- a/chrome/android/java/src/org/chromium/chrome/browser/media/FullscreenVideoPictureInPictureController.java
 +++ b/chrome/android/java/src/org/chromium/chrome/browser/media/FullscreenVideoPictureInPictureController.java
 @@ -281,6 +281,10 @@ public class FullscreenVideoPictureInPictureController {

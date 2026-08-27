@@ -1,8 +1,8 @@
 diff --git a/chrome/browser/ui/tabs/features.cc b/chrome/browser/ui/tabs/features.cc
-index 9f151cf8e346533f5528b7d60e9c8f04d93b2988..e1a989361bb92fc75acb5181757dc0db731156fb 100644
+index 024de8a4e2d7a19871e9bf61fea2c7621e725fd3..96ec71dc0c479ebbab8d8c6909fce8657f8d8cc5 100644
 --- a/chrome/browser/ui/tabs/features.cc
 +++ b/chrome/browser/ui/tabs/features.cc
-@@ -28,7 +28,8 @@ BASE_FEATURE(kTabSearchCjkWordBoundary, base::FEATURE_DISABLED_BY_DEFAULT);
+@@ -26,7 +26,8 @@ BASE_FEATURE(kTabSearchCjkWordBoundary, base::FEATURE_DISABLED_BY_DEFAULT);
  
  BASE_FEATURE(kVerticalTabs, base::FEATURE_DISABLED_BY_DEFAULT);
  

@@ -1,5 +1,5 @@
 diff --git a/tools/gritsettings/resource_ids.spec b/tools/gritsettings/resource_ids.spec
-index 9f87211bda65feb8b38cf3db2b0a83726d6810ab..c96b31289588974e550586c0b86ad15bec1d45a6 100644
+index 364c2516bf7896497be9ec365d96840c4cd1b9e9..53f01eb38994f6481175c167a2a65aa5295978ef 100644
 --- a/tools/gritsettings/resource_ids.spec
 +++ b/tools/gritsettings/resource_ids.spec
 @@ -38,6 +38,12 @@
@@ -24,7 +24,7 @@ index 9f87211bda65feb8b38cf3db2b0a83726d6810ab..c96b31289588974e550586c0b86ad15b
      "includes": [3920],
    },
    "<(SHARED_INTERMEDIATE_DIR)/chrome/browser/resources/extensions_zero_state_promo/resources.grd": {
-@@ -537,7 +543,7 @@
+@@ -541,7 +547,7 @@
      "includes": [4035],
    },
    "<(SHARED_INTERMEDIATE_DIR)/chrome/browser/resources/history/resources.grd": {
@@ -33,7 +33,7 @@ index 9f87211bda65feb8b38cf3db2b0a83726d6810ab..c96b31289588974e550586c0b86ad15b
      "includes": [4040],
    },
    "<(SHARED_INTERMEDIATE_DIR)/chrome/browser/resources/indigo/resources.grd": {
-@@ -729,7 +735,7 @@
+@@ -733,7 +739,7 @@
      "includes": [4730],
    },
    "<(SHARED_INTERMEDIATE_DIR)/chrome/browser/resources/settings/resources.grd": {

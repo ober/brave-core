@@ -1,8 +1,8 @@
 diff --git a/chrome/browser/ui/android/appmenu/internal/java/src/org/chromium/chrome/browser/ui/appmenu/AppMenu.java b/chrome/browser/ui/android/appmenu/internal/java/src/org/chromium/chrome/browser/ui/appmenu/AppMenu.java
-index 4dea03c56a8b60dd337087199095f8d60a2157da..f9377ec94e5e0eb49b2b7446c6e8081f48cdf7d4 100644
+index d6df10f70e1ff75c6a40d06af72b5067a4534eb0..e2c8d5bd3024e28a354f58754bca3ea8f1d7cb59 100644
 --- a/chrome/browser/ui/android/appmenu/internal/java/src/org/chromium/chrome/browser/ui/appmenu/AppMenu.java
 +++ b/chrome/browser/ui/android/appmenu/internal/java/src/org/chromium/chrome/browser/ui/appmenu/AppMenu.java
-@@ -509,6 +509,7 @@ class AppMenu implements OnKeyListener {
+@@ -525,6 +525,7 @@ class AppMenu implements OnKeyListener {
              }
          }
  

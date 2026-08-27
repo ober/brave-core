@@ -1,5 +1,5 @@
 diff --git a/components/search/ntp_features.cc b/components/search/ntp_features.cc
-index 715b4fe78feac210539d28901c6c35e69b6ae65a..251f56d50dfe0c5a2eda161fff413db100f3bfc3 100644
+index 1d4130abf13a7a329accd3b3aba45ef0b564b9df..2e8c01bf52192308687f054e2d2c80cd1f8e233e 100644
 --- a/components/search/ntp_features.cc
 +++ b/components/search/ntp_features.cc
 @@ -24,17 +24,14 @@ BASE_FEATURE(kConfirmSuggestionRemovals,

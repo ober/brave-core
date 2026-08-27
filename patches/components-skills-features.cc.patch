@@ -1,5 +1,5 @@
 diff --git a/components/skills/features.cc b/components/skills/features.cc
-index b03b424873eb36945d0e9bdcd2e8b1a35bf0d6ac..3dfbf79ceba74078a45e3f256eba1351ad72ea5d 100644
+index f4c681a6b3eebd3259fd782a94f4c13672325dcb..ffc661a52725e021d63fefe4419e2f0111aeeafe 100644
 --- a/components/skills/features.cc
 +++ b/components/skills/features.cc
 @@ -7,13 +7,9 @@

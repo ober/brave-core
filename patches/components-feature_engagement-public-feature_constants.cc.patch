@@ -1,8 +1,8 @@
 diff --git a/components/feature_engagement/public/feature_constants.cc b/components/feature_engagement/public/feature_constants.cc
-index 5f4b7dba709ab86e3d50f3f5fd255eaf79ffdd37..05c1dbf4f252b531f4c8bb547160959d7930947c 100644
+index 60cb246eac50cfedef09882f9496b4f577ddfef5..c987bae56f5cd4807ba024ae33ee5f40eab3c801 100644
 --- a/components/feature_engagement/public/feature_constants.cc
 +++ b/components/feature_engagement/public/feature_constants.cc
-@@ -68,9 +68,10 @@ BASE_FEATURE(kIPHDesktopCustomizeChromeAutoOpenFeature,
+@@ -74,9 +74,10 @@ BASE_FEATURE(kIPHDesktopCustomizeChromeAutoOpenFeature,
  BASE_FEATURE(kIPHDesktopRealboxContextualSearchFeature,
               "IPH_DesktopRealboxContextualSearchFeature",
               base::FEATURE_DISABLED_BY_DEFAULT);
@@ -14,7 +14,7 @@ index 5f4b7dba709ab86e3d50f3f5fd255eaf79ffdd37..05c1dbf4f252b531f4c8bb547160959d
  BASE_FEATURE(kIPHDownloadEsbPromoFeature,
               "IPH_DownloadEsbPromo",
               base::FEATURE_ENABLED_BY_DEFAULT);
-@@ -113,9 +114,10 @@ BASE_FEATURE_ENUM_PARAM(
+@@ -119,9 +120,10 @@ BASE_FEATURE_ENUM_PARAM(
  BASE_FEATURE(kIPHFocusHelpBubbleScreenReaderPromoFeature,
               "IPH_FocusHelpBubbleScreenReaderPromo",
               base::FEATURE_ENABLED_BY_DEFAULT);
@@ -26,7 +26,7 @@ index 5f4b7dba709ab86e3d50f3f5fd255eaf79ffdd37..05c1dbf4f252b531f4c8bb547160959d
  BASE_FEATURE(kIPHGMCLocalMediaCastingFeature,
               "IPH_GMCLocalMediaCasting",
               base::FEATURE_ENABLED_BY_DEFAULT);
-@@ -166,9 +168,10 @@ BASE_FEATURE(kIPHPasswordsSavePrimingPromoFeature,
+@@ -172,9 +174,10 @@ BASE_FEATURE(kIPHPasswordsSavePrimingPromoFeature,
  BASE_FEATURE(kIPHPasswordsSaveRecoveryPromoFeature,
               "IPH_PasswordsSaveRecoveryPromo",
               base::FEATURE_ENABLED_BY_DEFAULT);
@@ -38,7 +38,7 @@ index 5f4b7dba709ab86e3d50f3f5fd255eaf79ffdd37..05c1dbf4f252b531f4c8bb547160959d
  BASE_FEATURE(kIPHPasswordsManagementBubbleDuringSigninFeature,
               "IPH_PasswordsManagementBubbleDuringSignin",
               base::FEATURE_ENABLED_BY_DEFAULT);
-@@ -184,9 +187,10 @@ BASE_FEATURE(kIPHPasswordSharingFeature,
+@@ -190,9 +193,10 @@ BASE_FEATURE(kIPHPasswordSharingFeature,
  BASE_FEATURE(kIPHPdfGlicSummarizeFeature,
               "IPH_PdfGlicSummarizeFeature",
               base::FEATURE_ENABLED_BY_DEFAULT);
@@ -50,7 +50,7 @@ index 5f4b7dba709ab86e3d50f3f5fd255eaf79ffdd37..05c1dbf4f252b531f4c8bb547160959d
  BASE_FEATURE(kIPHPdfSearchifyFeature,
               "IPH_PdfSearchifyFeature",
               base::FEATURE_ENABLED_BY_DEFAULT);
-@@ -217,6 +221,7 @@ BASE_FEATURE(kIPHReadingListDiscoveryFeature,
+@@ -223,6 +227,7 @@ BASE_FEATURE(kIPHReadingListDiscoveryFeature,
  BASE_FEATURE(kIPHReadingListEntryPointFeature,
               "IPH_ReadingListEntryPoint",
               base::FEATURE_DISABLED_BY_DEFAULT);
@@ -58,7 +58,7 @@ index 5f4b7dba709ab86e3d50f3f5fd255eaf79ffdd37..05c1dbf4f252b531f4c8bb547160959d
  BASE_FEATURE(kIPHReadingListInSidePanelFeature,
               "IPH_ReadingListInSidePanel",
               base::FEATURE_DISABLED_BY_DEFAULT);
-@@ -244,21 +249,24 @@ BASE_FEATURE(kIPHSmartTabSharingFeature,
+@@ -250,21 +255,24 @@ BASE_FEATURE(kIPHSmartTabSharingFeature,
  BASE_FEATURE(kIPHSmartTabSharingTryItFeature,
               "IPH_SmartTabSharingTryItFeature",
               base::FEATURE_DISABLED_BY_DEFAULT);
@@ -86,7 +86,7 @@ index 5f4b7dba709ab86e3d50f3f5fd255eaf79ffdd37..05c1dbf4f252b531f4c8bb547160959d
  BASE_FEATURE(kIPHSidePanelGenericPinnableFeature,
               "IPH_SidePanelGenericPinnableFeature",
               base::FEATURE_ENABLED_BY_DEFAULT);
-@@ -280,9 +288,10 @@ BASE_FEATURE(kIPHSideSearchPageActionLabelFeature,
+@@ -286,9 +294,10 @@ BASE_FEATURE(kIPHSideSearchPageActionLabelFeature,
  BASE_FEATURE(kIPHPwaQuietNotificationFeature,
               "IPH_PwaQuietNotification",
               base::FEATURE_ENABLED_BY_DEFAULT);
@@ -98,7 +98,7 @@ index 5f4b7dba709ab86e3d50f3f5fd255eaf79ffdd37..05c1dbf4f252b531f4c8bb547160959d
  BASE_FEATURE(kIPHTabGroupsSaveV2CloseGroupFeature,
               "IPH_TabGroupsSaveV2CloseGroup",
               base::FEATURE_ENABLED_BY_DEFAULT);
-@@ -1007,9 +1016,10 @@ BASE_FEATURE(kIPHAutofillExternalAccountProfileSuggestionFeature,
+@@ -1022,9 +1031,10 @@ BASE_FEATURE(kIPHAutofillExternalAccountProfileSuggestionFeature,
  BASE_FEATURE(kIPHAutofillHomeWorkProfileSuggestionFeature,
               "IPH_AutofillHomeWorkProfileSuggestion",
               base::FEATURE_ENABLED_BY_DEFAULT);

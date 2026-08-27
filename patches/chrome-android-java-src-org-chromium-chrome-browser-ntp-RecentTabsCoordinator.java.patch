@@ -1,5 +1,5 @@
 diff --git a/chrome/android/java/src/org/chromium/chrome/browser/ntp/RecentTabsCoordinator.java b/chrome/android/java/src/org/chromium/chrome/browser/ntp/RecentTabsCoordinator.java
-index 95f4645e4e14df4f358946ca25c1ddd699202988..5fb7d44e4ddd8350444b9404ca42fcedfb28e21e 100644
+index f0376cbe18a65ef9dbbbc4c4e0b751b3d5fc5b5f..55105ecb387be67ae5ac1e5966fcb9121ed56821 100644
 --- a/chrome/android/java/src/org/chromium/chrome/browser/ntp/RecentTabsCoordinator.java
 +++ b/chrome/android/java/src/org/chromium/chrome/browser/ntp/RecentTabsCoordinator.java
 @@ -79,7 +79,7 @@ public class RecentTabsCoordinator

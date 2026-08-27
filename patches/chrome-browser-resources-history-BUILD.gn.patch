@@ -1,5 +1,5 @@
 diff --git a/chrome/browser/resources/history/BUILD.gn b/chrome/browser/resources/history/BUILD.gn
-index d01c075f08041c38b340bdbbeef0576872c40da0..22215845f4d64c46742c25d8012bc6622132d125 100644
+index 95d788b2be5b0f9e185b71f2434e8572c03fa3fb..992bed5f549309f4e29b997ef7ca7fccf879b616 100644
 --- a/chrome/browser/resources/history/BUILD.gn
 +++ b/chrome/browser/resources/history/BUILD.gn
 @@ -114,4 +114,5 @@ build_webui("build") {
