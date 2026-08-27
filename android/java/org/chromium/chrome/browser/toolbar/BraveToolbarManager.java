@@ -36,6 +36,7 @@ import org.chromium.chrome.browser.app.tabwindow.TabWindowManagerSingleton;
 import org.chromium.chrome.browser.back_press.BackPressManager;
 import org.chromium.chrome.browser.bookmarks.BookmarkModel;
 import org.chromium.chrome.browser.bookmarks.TabBookmarker;
+import org.chromium.chrome.browser.bottombar.BraveBottomBarActionCoordinator;
 import org.chromium.chrome.browser.browser_controls.BottomControlsStacker;
 import org.chromium.chrome.browser.browser_controls.BottomControlsStacker.LayerType;
 import org.chromium.chrome.browser.browser_controls.BrowserControlsSizer;
@@ -178,6 +179,8 @@ public class BraveToolbarManager extends ToolbarManager
     private Runnable mOpenGridTabSwitcherHandler;
     private final MonotonicObservableSupplier<TabBookmarker> mTabBookmarkerSupplier;
     private final Supplier<ShareDelegate> mShareDelegateSupplier;
+    private final @Nullable ActionRegistry mBraveActionRegistry;
+    private @Nullable BraveBottomBarActionCoordinator mBraveBottomBarActionCoordinator;
 
     public BraveToolbarManager(
             AppCompatActivity activity,
@@ -317,6 +320,7 @@ public class BraveToolbarManager extends ToolbarManager
         mTabModelSelectorSupplier = tabModelSelectorSupplier;
         mTabBookmarkerSupplier = tabBookmarkerSupplier;
         mShareDelegateSupplier = shareDelegateSupplier;
+        mBraveActionRegistry = actionRegistry;
 
         if (isToolbarPhone()) {
             updateBraveBottomControlsVisibility();
@@ -524,6 +528,19 @@ public class BraveToolbarManager extends ToolbarManager
 
         mOpenGridTabSwitcherHandler = openGridTabSwitcherHandler;
 
+        // Registers the bottom bar buttons Brave adds to upstream's, alongside the ones upstream
+        // registers for it in ActionUtils#registerBottomBarActions.
+        if (mBraveActionRegistry != null
+                && BottomToolbarConfiguration.isAndroidBottomBarEnabled()) {
+            mBraveBottomBarActionCoordinator =
+                    new BraveBottomBarActionCoordinator(
+                            mBraveActionRegistry,
+                            mActivityTabProvider,
+                            mCallbackController.makeCancelable(
+                                    (reason) -> beginFuseboxInput(new AutocompleteInput(reason))));
+            updateBookmarkButtonStatus();
+        }
+
         if (isToolbarPhone() && BottomToolbarConfiguration.isBraveBottomControlsEnabled()) {
             mLocationBar.getContainerView().setAccessibilityTraversalBefore(R.id.bottom_toolbar);
             ContextUtils.getAppSharedPreferences().registerOnSharedPreferenceChangeListener(this);
@@ -563,6 +580,10 @@ public class BraveToolbarManager extends ToolbarManager
     public void destroy() {
         super.destroy();
         HomepageManager.getInstance().removeListener(mBraveHomepageStateListener);
+        if (mBraveBottomBarActionCoordinator != null) {
+            mBraveBottomBarActionCoordinator.destroy();
+            mBraveBottomBarActionCoordinator = null;
+        }
     }
 
     @Override
@@ -620,6 +641,10 @@ public class BraveToolbarManager extends ToolbarManager
                         instanceof BraveBottomControlsCoordinator) {
             ((BraveBottomControlsCoordinator) mTabGroupUiBottomControlsCoordinatorSupplier.get())
                     .updateBookmarkButton(isBookmarked, editingAllowed);
+        }
+
+        if (mBraveBottomBarActionCoordinator != null) {
+            mBraveBottomBarActionCoordinator.updateBookmarkButton(isBookmarked, editingAllowed);
         }
     }
 
