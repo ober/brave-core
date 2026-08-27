@@ -123,20 +123,11 @@
 -AILanguageModelTestWithLanguageParams.PromptWithEnabledLanguages/*
 -AIManagerTest.*
 -AIProofreaderTest.*
--AIRewriterManifestTest.CanCreateAndCreateWithManifestGemma4
--AIRewriterManifestTest.CanCreateBeforeDownloadGemma4
--AISummarizerManifestTest.CanCreateAndCreateWithManifestAutoPreference
--AISummarizerManifestTest.CanCreateAndCreateWithManifestCapabilityPreference
--AISummarizerManifestTest.CanCreateAndCreateWithManifestGemma4
--AISummarizerManifestTest.CanCreateAndCreateWithManifestSpeedPreference
--AISummarizerManifestTest.CanCreateBeforeDownloadGemma4
--AISummarizerManifestTest.CanCreateSummarizerWithSpeedPreferenceDownloadable
--AISummarizerManifestTest.InputLimitExceededErrorSpeedPreference
--AISummarizerManifestTest.SummarizeWithSpeedPreferenceAndContextFails
+-AIRewriterWithFeatureConfigTest.*
 -AISummarizerTest.*
--AIWriterManifestTest.CanCreateAndCreateWithManifestGemma4
--AIWriterManifestTest.CanCreateBeforeDownloadGemma4
+-AISummarizerWithFeatureConfigTest.*
 -AIWriterTest.*
+-AIWriterWithFeatureConfigTest.*
 -ActorSitePolicyTest.*
 -ActorTaskListBubbleControllerTest.*
 -All/ChangePasswordFormFinderTest.*/*
@@ -178,6 +169,7 @@
 
 # These tests fail because we don't use upstream's material colors.
 -MaterialNewTabPageColorMixerTest.*
+-MaterialTabStripColorMixerTest.*
 
 # These tests fail because we disable kFirstPartySets.
 -FirstPartySetsPolicyServicePrefTest.*
