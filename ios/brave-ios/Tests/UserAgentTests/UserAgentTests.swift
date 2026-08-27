@@ -95,8 +95,14 @@ class UserAgentTests: XCTestCase {
     let webView = WKWebView(frame: .zero)
     webView.customUserAgent = UserAgent.mobileMasked
 
-    webView.evaluateJavaScript("navigator.userAgent") { result, error in
-      let userAgent = result as! String
+    webView.evaluateJavaScript("navigator.userAgent") { [webView] result, error in
+      // capture `webView` to keep it alive until completion
+      _ = webView
+      guard let userAgent = result as? String else {
+        XCTFail("Failed to evaluate user agent: \(String(describing: error))")
+        expectation.fulfill()
+        return
+      }
       if !self.mobileUARegex(userAgent) || self.desktopUARegex(userAgent) {
         XCTFail("User agent did not match expected pattern! \(userAgent)")
       }
