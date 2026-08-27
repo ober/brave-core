@@ -6,6 +6,7 @@
 #include "ios/web/webui/mojo_facade.h"
 
 #include "base/auto_reset.h"
+#include "base/notreached.h"
 #include "ios/components/webui/web_ui_url_constants.h"
 #include "url/gurl.h"
 #include "url/origin.h"
@@ -38,7 +39,7 @@ void MojoFacade::StorePipeForCurrentFrame(int pipe_id,
   // close it, so a clash means the frame scoping has a hole.
   if (frame_pipes.contains(pipe_id)) {
     SCOPED_CRASH_KEY_NUMBER("MojoFacade", "pipe_id", pipe_id);
-    base::debug::DumpWithoutCrashing();
+    DUMP_WILL_BE_NOTREACHED();
   }
   frame_pipes[pipe_id] = std::move(pipe);
 }
