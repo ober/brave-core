@@ -64,7 +64,8 @@ substitutions:
       live pipes, which crashes the CHECK(pipe.is_valid()) in
       HandleMojoHandleWriteMessage.
     regex:
-      re_pattern: 'std::unordered_map<int, mojo::ScopedMessagePipeHandle> pipes_;'
+      re_pattern:
+        'std::unordered_map<int, mojo::ScopedMessagePipeHandle> pipes_;'
       replace: |-
         // Keyed by frame id first: pipe ids are unique only within a frame.
           std::map<std::string, std::unordered_map<int, mojo::ScopedMessagePipeHandle>>
