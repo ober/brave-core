@@ -52,6 +52,7 @@ class ScreenshotControllerTest : public ChromeRenderViewHostTestHarness {
       gfx::NativeWindow parent,
       std::vector<uint8_t> png,
       base::OnceCallback<void(std::vector<uint8_t>)> on_download,
+      base::OnceCallback<void(std::vector<uint8_t>)> on_copy,
       base::OnceClosure on_cancel) {
     std::move(on_download).Run(std::move(png));
   }
@@ -231,8 +232,9 @@ TEST_F(ScreenshotControllerTest,
   base::test::TestFuture<void> preview_shown;
   base::OnceClosure captured_cancel;
   auto shower = base::BindLambdaForTesting(
-      [&](gfx::NativeWindow parent, std::vector<uint8_t> png,
-          base::OnceCallback<void(std::vector<uint8_t>)> on_download,
+      [&](gfx::NativeWindow, std::vector<uint8_t>,
+          base::OnceCallback<void(std::vector<uint8_t>)>,
+          base::OnceCallback<void(std::vector<uint8_t>)>,
           base::OnceClosure on_cancel) {
         captured_cancel = std::move(on_cancel);
         preview_shown.SetValue();
@@ -251,6 +253,42 @@ TEST_F(ScreenshotControllerTest,
   std::move(captured_cancel).Run();
 
   EXPECT_EQ(future.Get(), base::unexpected(Error::kUserCancelled));
+  EXPECT_FALSE(dialog_factory_->GetLastDialog());
+}
+
+TEST_F(ScreenshotControllerTest,
+       PreviewDialog_UserCopies_ReturnsSuccessWithoutSaveDialog) {
+  base::test::TestFuture<void> preview_shown;
+  std::vector<uint8_t> captured_png;
+  base::OnceCallback<void(std::vector<uint8_t>)> captured_copy;
+  auto shower = base::BindLambdaForTesting(
+      [&](gfx::NativeWindow, std::vector<uint8_t> png,
+          base::OnceCallback<void(std::vector<uint8_t>)>,
+          base::OnceCallback<void(std::vector<uint8_t>)> on_copy,
+          base::OnceClosure) {
+        captured_png = std::move(png);
+        captured_copy = std::move(on_copy);
+        preview_shown.SetValue();
+      });
+
+  auto controller = std::make_unique<ScreenshotController>(
+      profile(), base::BindRepeating([]() { return gfx::NativeWindow(); }),
+      shower);
+  controller->set_download_dir_for_testing(temp_dir_.GetPath());
+
+  SkBitmap bitmap = MakeSolidBitmap(64, 64, SK_ColorBLUE);
+
+  base::test::TestFuture<Result> future;
+  InjectBitmapInto(controller.get(), std::move(bitmap), future.GetCallback());
+
+  ASSERT_TRUE(preview_shown.Wait());
+  ASSERT_FALSE(captured_png.empty());
+  ASSERT_FALSE(captured_copy.is_null());
+  std::move(captured_copy).Run(std::move(captured_png));
+
+  Result result = future.Get();
+  ASSERT_TRUE(result.has_value());
+  EXPECT_TRUE(result.value().empty());
   EXPECT_FALSE(dialog_factory_->GetLastDialog());
 }
 
