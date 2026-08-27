@@ -33,6 +33,7 @@
 #if defined(TOOLKIT_VIEWS)
 #include "brave/browser/ui/sidebar/sidebar_service_factory.h"
 #include "brave/browser/ui/sidebar/sidebar_utils.h"
+#include "chrome/browser/ui/views/frame/browser_view.h"
 #endif
 
 #if BUILDFLAG(ENABLE_BRAVE_VPN)
@@ -102,6 +103,7 @@ void BraveAppMenuModel::Build() {
   BuildTabsAndWindowsSection();
   BuildBraveProductsSection();
   BuildBrowserSection();
+  ReorderUpstreamMenu();
   BuildMoreToolsSubMenu();
   BuildPasswordsAndAutofillSubmenu();
   BuildHelpSubMenu();
@@ -412,6 +414,43 @@ void BraveAppMenuModel::RemoveUpstreamMenus() {
   if (const auto index = GetIndexOfCommandId(IDC_ABOUT)) {
     RemoveItemAt(*index);
   }
+}
+
+void BraveAppMenuModel::ReorderUpstreamMenu() {
+  ui::SimpleMenuModel* save_and_share_model =
+      static_cast<ui::SimpleMenuModel*>(GetSubmenuModelAt(
+          GetIndexOfCommandId(kSaveAndShareMenuPlaceholder).value()));
+  DCHECK(save_and_share_model);
+
+  // Find the Screenshot menu item in the Save and Share submenu.
+  auto screenshot_index =
+      save_and_share_model->GetIndexOfCommandId(IDC_SHARING_HUB_SCREENSHOT);
+  if (!screenshot_index.has_value()) {
+    return;
+  }
+
+  // Find the Save Page As... menu item.
+  auto save_page_index =
+      save_and_share_model->GetIndexOfCommandId(IDC_SAVE_PAGE);
+  if (!save_page_index.has_value()) {
+    return;
+  }
+
+  // Remove the Screenshot item from its current position.
+  save_and_share_model->RemoveItemAt(*screenshot_index);
+
+  // Calculate the new insert index - right after Save Page As...
+  // Note: screenshot_index might have changed after removal, so we recalculate.
+  auto new_save_page_index =
+      save_and_share_model->GetIndexOfCommandId(IDC_SAVE_PAGE);
+  size_t insert_index = new_save_page_index.value_or(0) + 1;
+
+  // Re-add the Screenshot menu item with the SAME command ID
+  // (IDC_SHARING_HUB_SCREENSHOT) but it will be handled by our new logic in
+  // IsCommandIdEnabled and ExecuteCommand
+  save_and_share_model->InsertItemWithStringIdAt(
+      insert_index, IDC_SHARING_HUB_SCREENSHOT,
+      IDS_SHARING_HUB_SCREENSHOT_LABEL);
 }
 
 void BraveAppMenuModel::ExecuteCommand(int id, int event_flags) {

@@ -76,6 +76,10 @@ class BraveAppMenuModel : public AppMenuModel {
   // to another location.
   void RemoveUpstreamMenus();
 
+  // Reorders the upstream menu items by moving Screenshot to appear after
+  // "Save Page As..." in the Save and Share submenu.
+  void ReorderUpstreamMenu();
+
 #if defined(TOOLKIT_VIEWS)
   std::unique_ptr<ui::ButtonMenuItemModel> sidebar_show_option_model_;
 #endif  // defined(TOOLKIT_VIEWS)
